@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        {include file="default/here.html"}
+        <div class="main w1000 auto clearfix">
+            <div class="fl w728 cagetory border clearfix">
+                <div class="title ta-c">{$info.title}</div>
+                <div class="subtitle">来源：{$web_config.web_title} 发布时间：{$info.addtime|date_format:Y-m-d}<span class="fr">字体[<a href="javascript:setSize('16px');">大</a> <a href="javascript:setSize('14px');">中</a> <a href="javascript:setSize('12px');">小</a>]</span></div>
+                <article>
+                    {$info.content}
+                    <div class="go">
+                        {if $prev}
+                        <p>上一篇：<a href="{if $prev.url != ''}{$prev.url}{else}{insert name=url mod=jobs_news_show id=$prev.id}{/if}" title="{$prev.title}">{$prev.title|truncate:50:''}</a> </p>
+                        {/if}
+                        {if $next}
+                        <p>下一篇：<a href="{if $next.url != ''}{$next.url}{else}{insert name=url mod=jobs_news_show id=$next.id}{/if}" title="{$next.title}">{$next.title|truncate:50:''}</a></p>
+                        {/if}
+                    </div>
+                </article>
+                <div class="clh"></div>
+            </div>
+            {include file="default/jobs_left.html"}
+        </div>
+        {include file="default/footer.html"}
+        <script>
+            function setSize(v){
+                $(".cagetory").css('font-size',v);
+            }
+        </script>
+    </body>
+</html>

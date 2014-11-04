@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        {include file="default/here.html"}
+        <div class="product_show w1000 auto mt10 clearfix">
+            <div class="fl cagetory border w250">
+                <h2>产品分类</h2>
+                <ul>
+                    {foreach item=v from=$type}
+                    <li {if $v.id == $info.typeid}class="cur"{/if}><a href="{insert name=url mod=product_cate id=$v.id}">{$v.title}</a> </li>
+                        {foreach item=y from=$v.child}
+                            <li class="child {if $y.id == $info.typeid}cur{/if}"><a href="{insert name=url mod=product_cate id=$y.id}">{$y.title}</a> </li>
+                        {/foreach}
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="fr w728 border content">
+                <div class="title">产品展示</div>
+                <h3>{$info.title}</h3>
+                <div class="time ta-c">更新时间：{$info.addtime|date_format:Y-m-d}</div>
+                <div class="info">
+                    <div class="pic clearfix">
+                        <img src="{$web_dir}uploadfile/upfiles/{$info.pic}" width="357" height="232" />
+                        <dl>
+                            <dt width="30%">生产厂家：</dt>
+                            <dd>{$info.changjia}</dd>
+                        </dl>
+                        <dl>
+                            <dt width="30%">规格型号：</dt>
+                            <dd>{$info.xinghao}</dd>
+                        </dl>
+                        <dl>
+                            <dt width="30%">产&nbsp;&nbsp;&nbsp;&nbsp;地：</dt>
+                            <dd>{$info.name}</dd>
+                        </dl>
+                        <dl>
+                            <dt>价&nbsp;&nbsp;&nbsp;&nbsp;格：</dt>
+                            <dd>{$info.price}</dd>
+                            <dt>包&nbsp;&nbsp;&nbsp;&nbsp;装：</dt>
+                            <dd>{$info.baozhuang}</dd>
+                        </dl>
+                        <dl>
+                            <dt>供应数量：</dt>
+                            <dd>{$info.num}</dd>
+                            <dt>最小订量：</dt>
+                            <dd>{$info.min}</dd>
+                        </dl>
+                        <dl>
+                            <dt>运输方式：</dt>
+                            <dd>{$info.yunshu}</dd>
+                            <dt>交货地点：</dt>
+                            <dd>{$info.didian}</dd>
+                        </dl>
+                        <dl>
+                            <dt>付款方式：</dt>
+                            <dd>{$info.fukuai}</dd>
+                            <dt>信息有效期：</dt>
+                            <dd>{$info.youxiao}</dd>
+                        </dl>
+                    </div>
+                </div>
+                <h6 class="clearfix">产品详细描述：</h6>
+                <article>{$info.content}</article>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+    </body>
+</html>

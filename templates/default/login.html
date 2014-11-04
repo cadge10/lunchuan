@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        <div class="main w1000 auto border mt10 clearfix">
+            <h2><span class="cur">会员登录</span><span>免费注册</span></h2>
+            <div class="loginLeft fl">
+                <form method="post" action="{insert name=url mod=login}" >
+                        <label>用户名：</label><input class="w200 fl" type="text" name="username" />
+                        <div class="clh"></div>
+                        <label>密&nbsp;&nbsp;码：</label><input class="w200 fl" type="password" name="password" />
+                        <div class="clh"></div>
+                        <label>验证码：</label><input class="w50 fl" type="text" name="code" />&nbsp;<img height="28" src="includes/getcode.php" onerror="this.onerror=null;this.src='includes/getcode.php?s='" title="看不清楚?换一张" style="cursor:pointer;" onclick="this.src='includes/getcode.php?s='" />
+                        <div class="clh"></div>
+                        <label>&nbsp;</label><input class="fl" type="checkbox" name="rem" value="1" />记住登录状态 <a href="{insert name=url mod=forget}">忘记密码？</a>
+                        <div class="clh"></div>
+                        <label>&nbsp;</label><input type="image" src="{$theme_dir}images/loginBtn.png" />
+                        <div class="clh"></div>
+                        <label class="other">快捷登录：</label>
+                        <span><a href="#"><img src="{$theme_dir}images/qqLogin.png" /> QQ登录</a></span>
+                        <span><a href="#"><img src="{$theme_dir}images/sinaLogin.png" />新浪登录</a></span>
+                </form>
+            </div>
+            <div class="loginRight fr">
+                <img src="{$theme_dir}images/qrcodeLogin.png" />
+                还不是轮胎贸易网会员？<br><a href="{insert name=url mod=register}">马上注册</a>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+    </body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        <div class="main w1000 auto border mt10 clearfix">
+            <h2><span>会员登录</span><span class="cur">免费注册</span></h2>
+            <div class="register fl">
+                <form method="post" action="{insert name=url mod=register}" onsubmit="return registerForm();">
+                        <h4>会员登录名和密码    <span>带<em>*</em>为必填项</span></h4>
+                        <div class="clh"></div>
+                        <label>会员登录名<em>*</em></label><input class="w300 fl" type="text" name="username" />
+                        <div class="clh"></div>
+                        <label>登录密码<em>*</em></label><input class="w200 fl" type="password" name="password" />
+                        <div class="clh"></div>
+                        <label>确认密码<em>*</em></label><input class="w200 fl" type="password" name="repass" />
+                        <div class="clh"></div>
+                        <h4>姓名和联系方式    <span>带<em>*</em>为必填项</span></h4>
+                        <div class="clh"></div>
+                        <label>您的姓名<em>*</em></label><input class="w300 fl" type="text" name="realname" />
+                        <div class="clh"></div>
+                        <label>您的公司<em>*</em></label><input class="w300 fl" type="text" name="company" />
+                        <div class="clh"></div>
+                        <label>公司所在<em>*</em></label><select style="width: 82px;" name="province" id="province" onchange="javascript:getCity(this.options[this.selectedIndex].value);">
+                            <option value="-1">请选择</option>
+                        </select>
+                            <select style="width: 145px;" name="city" id="city">
+                                <option value="-1">请选择</option>
+                            </select>
+                        <div class="clh"></div>
+                        <label>性别<em>*</em></label><input type="radio" name="sex" value="1" checked /><span>男</span><input type="radio" name="sex" value="2" /><span>女</span>
+                        <div class="clh"></div>
+                        <label>手机号码<em>*</em></label><input class="w200 fl" type="text" name="phone" />
+                        <div class="clh"></div>
+                        <label>电子邮箱<em>*</em></label><input class="w200 fl" type="text" name="email" />
+                        <div class="clh"></div>
+                        <label>固定电话<em>*</em></label><input class="w200 fl" type="text" name="tel" />
+                        <div class="clh"></div>
+                        <label>会员类型<em>*</em></label><input type="radio" name="utype" value="1" checked /><span>供应商</span><input type="radio" name="utype" value="2" /><span>采购商</span>
+                        <div class="clh"></div>
+                        <label>传&nbsp;&nbsp;真</label><input class="w200 fl" type="text" name="fax" />
+                        <div class="clh"></div>
+                        <label>QQ号码</label><input class="w200 fl" type="text" name="qq" />
+                        <div class="clh"></div>
+                        <label>&nbsp;</label><input class="fl" type="image" src="{$theme_dir}images/registerBtn.png" /> <p>已有帐号，<a href="{insert name=url mod=login}">登录</a></p>
+                        <div class="clh"></div>
+                </form>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+        <script>
+            $(function(){
+                var url_province = "?mod=sell&act=province" ;
+                $('#province').empty() ;
+                $('#province').append('<option value="-1">请选择</option>') ;
+                $.getJSON(url_province,function(json){
+                    $(json).each(function(i){
+                        // alert(json[i].id) ;
+                        var option = '<option value="'+json[i].code+'">'+json[i].name+'</option>' ;
+                        $('#province').append(option);
+                    });
+                });
+            }) ;
+
+            function getCity(code){
+
+                var url_city = "?mod=sell&act=city" ;
+                $('#city').empty() ;
+                $('#city').append('<option value="-1">请选择</option>') ;
+                //alert(code) ;
+                $.getJSON(url_city,{'code':code},function(json){
+                    $(json).each(function(i){
+                        var option = '<option value="'+json[i].code+'">'+json[i].name+'</option>' ;
+                        $('#city').append(option);
+                    });
+                });
+            }
+        </script>
+    </body>
+</html>

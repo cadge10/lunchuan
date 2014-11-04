@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>基于jQuery弹窗演示</title>
+<script type="text/javascript" src="../jquery.js"></script>
+<script type="text/javascript" src="jquery.dialog.js"></script>
+<link rel="stylesheet" type="text/css" href="dialog.css" />
+</head>
+
+<body>
+
+<span style="cursor:pointer" id="open_html">内容弹窗</span><br />
+<div style="width:100px; height:200px;"></div>
+<span style="cursor:pointer" id="open_url">URL弹窗</span><br /><br />
+<span style="cursor:pointer" id="open_tips">提示窗</span><br /><br />
+
+<div style="display:none;" id="html_content">
+  <div style="padding:10px;">我是HTML里面的内容 <span style="cursor:pointer" onclick="c_dialog.close()">关闭</span></div>
+</div>
+
+<script type="text/javascript">
+$('#open_html').click(function(){c_dialog.openHtml($('#html_content').html(),'弹出内容',500,300)});
+$('#open_url').click(function(){c_dialog.openUrl('demo.html','URL弹窗',800,500)});
+$('#open_tips').click(function(){c_tips.open('请输入登录名。',3,1)});
+</script>
+<div style="width:100px; height:1000px;"></div>
+
+</body>
+</html>

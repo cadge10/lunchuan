@@ -1,0 +1,30 @@
+<div class="fr main">
+    <div class="bus border w258">
+        <h4 class="clearfix"><span>最新资讯</span><a class="more" href="{insert name=url mod=cagetory id=19}"><img src="{$theme_dir}images/more.png" /> </a></h4>
+        <ul>
+            {foreach item=v from=$new}
+            <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a></li>
+            {/foreach}
+        </ul>
+    </div>
+    <div class="clh"></div>
+    <a href="{$banner.url}"> <img src="{$web_dir}uploadfile/upfiles/{$banner.pic}" /></a>
+    <div class="cl"></div>
+    <div class="bus mt10 border w258">
+        <h4 class="clearfix"><span>推荐产品</span><a class="more" href="{insert name=url mod=cagetory id=19}"><img src="{$theme_dir}images/more.png" /> </a></h4>
+        <ul>
+            {foreach item=v from=$new}
+            <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a></li>
+            {/foreach}
+        </ul>
+    </div>
+    <div class="cl"></div>
+    <div class="bus mt10 border w258">
+        <h4 class="clearfix"><span>推荐企业</span><a class="more" href="{insert name=url mod=cagetory id=19}"><img src="{$theme_dir}images/more.png" /> </a></h4>
+        <ul>
+            {foreach item=v from=$new}
+            <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a></li>
+            {/foreach}
+        </ul>
+    </div>
+</div>

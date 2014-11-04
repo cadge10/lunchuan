@@ -1,0 +1,15 @@
+/* 分页样式1，针对分页类，可适当调整 */
+.page_style{text-align:right;font-size:14px;line-height:24px; font-family:Arial;}
+.page_style a,.page_style a:link,.page_style a:visited{color:#616161;text-decoration:none;outline:0 none}
+.page_style a:hover{color:#FF5A00;text-decoration:none}
+.page_style a,.page_style .current{border:solid 1px #CECECE;line-height:22px;padding:0 7px;font-size:14px;display:inline-block;vertical-align:middle;background:#FFF}
+.page_style .current{color:#FF5A00;}
+
+/* 分页样式2，针对base里的分页方法（包括内容分页） */
+.page { padding:10px 0px;margin-left: 10px;}
+.page  { margin:0px; padding:0px; text-align:center;}
+.page  { display: inline-block; text-align:center;}
+.page  a,.page   span,.page   span.pageinfo { display:inline-block; margin: 0; padding: 0 8px; height: 20px; color: #06c; border: 1px solid #ccc; text-align: center; line-height: 20px;}
+/*.page ul li span { color:#ff8f00;}*/
+.page a:hover { color:#ff8f00;}
+.page .current { color:#ff8f00;}

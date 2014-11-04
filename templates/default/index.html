@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+        <link type="text/css" rel="stylesheet" href="{$theme_dir}css/lrtk.css" />
+        <script type="text/javascript" src="{$theme_dir}js/jquery.superslide.2.1.1.js"></script>
+    </head>
+    <body>
+        {include file="default/header.html"}
+        <div class="main index w1000 auto mt10 clearfix">
+            <div class="banner w735 fl">
+                <ul class="51buypic">
+                    {foreach item=v from=$banner}
+                    <li><a href="{$v.url}" target="_blank"><img src="{$web_dir}uploadfile/upfiles/{$v.pic}" /></a></li>
+                    {/foreach}
+                </ul>
+                <a class="prev" href="javascript:void(0)"></a>
+                <a class="next" href="javascript:void(0)"></a>
+                <div class="num">
+                    <ul></ul>
+                </div>
+            </div>
+            <div class="data w260 fr">
+                <h4><a href="{insert name=url mod=price}">更多>></a> </h4>
+                <ul class="clearfix">
+                    <li class="cur">废钢丝胎</li>
+                    <li>胶粉</li>
+                    <li>再生胶</li>
+                    <li>废胶车胎</li>
+                    <li>内胎</li>
+                </ul>
+                <table align="center" cellspacing="0" cellpadding="0" border="1">
+                    <tr>
+                        <th width="25%">地区</th>
+                        <th width="25%">价位</th>
+                        <th width="25%">涨跌</th>
+                        <th width="25%">日期</th>
+                    </tr>
+                    <tr>
+                        <td>天津静海</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr><tr>
+                        <td>河北衡水</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr><tr>
+                        <td>山东青岛</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr><tr>
+                        <td>广东广州</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr><tr>
+                        <td>福建夏门</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="cl"></div>
+            <div class="news mr10 mt20 border w298 fl">
+                <h4 class="clearfix"><span>最新资讯</span><a class="more" href="{insert name=url mod=cagetory id=20}"><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <ul>
+                    {foreach item=v from=$news}
+                    <li>
+                        <h6><a href="{insert name=url mod=news_show id=$v.id}">{$v.title}</a><span>{$v.addtime|date_format:Y/m/d}</span></h6>
+                        <p>
+                            {$v.content|strig_tags|truncate:134:''}
+                        </p>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="info mt20 w678 fr">
+                <h4 class="clearfix tabs">
+                    <span data-obj="#tab1">供应信息</span>
+                    <span data-obj="#tab2">求购信息</span>
+                </h4>
+                <table id="tab1" class="tab_content" width="100%" align="center" cellspacing="0" cellpadding="0">
+                    <tr class="even">
+                        <td width="20%">日期</td>
+                        <td width="20%">主题（产品）</td>
+                        <td width="20%">城市</td>
+                        <td width="20%">公司名称</td>
+                        <td width="20%">联系方式</td>
+                    </tr>
+                    {foreach item=v from=$sell key=k}
+                    <tr data-id="{$v.id}" class="{if $k % 2 == 1}odd{else}even{/if}">
+                        <td>{$v.addtime|date_format:Y/m/d}</td>
+                        <td>{$v.mingcheng}</td>
+                        <td>{$v.name}</td>
+                        <td>{$v.company}</td>
+                        <td>{$v.tel}</td>
+                    </tr>
+                    {/foreach}
+                </table>
+                <div class="cl"></div>
+                <table id="tab2" class="tab_content" width="100%" align="center" cellspacing="0" cellpadding="0">
+                    <tr class="even">
+                        <td width="20%">日期</td>
+                        <td width="20%">主题（产品）</td>
+                        <td width="20%">城市</td>
+                        <td width="20%">公司名称</td>
+                        <td width="20%">联系方式</td>
+                    </tr>
+                    {foreach item=v from=$get key=k}
+                    <tr data-id="{$v.id}" class="{if $k % 2 == 1}odd{else}even{/if}">
+                        <td>{$v.addtime|date_format:Y/m/d}</td>
+                        <td>{$v.mingcheng}</td>
+                        <td>{$v.name}</td>
+                        <td>{$v.company}</td>
+                        <td>{$v.tel}</td>
+                    </tr>
+                    {/foreach}
+                </table>
+                <h3>本信息仅供参考，未经允许，不得转载<a href="">点击此处自主报价</a> </h3>
+            </div>
+            <div class="cl"></div>
+            <div class="ad mt10 w1000">
+                {foreach item=v from=$banner_ad}
+                <a href="{$v.url}"><img src="{$web_dir}uploadfile/upfiles/{$v.pic}" /> </a>
+                {/foreach}
+            </div>
+            <div class="cl"></div>
+            <div class="products borderTop w690 mt10 fl">
+                <div class="mt10 fl">
+                    <img src="{$theme_dir}images/hot.png" />
+                </div>
+                <ul>
+                    {foreach item=v from=$product_hot}
+                    <li>
+                        <a href="{insert name=url mod=product_show id=$v.id}">
+                            <img width="165" height="115" src="{$web_dir}uploadfile/upfiles/{$v.pic}" />
+                            <p>{$v.title} <span>￥{$v.price}</span></p>
+                        </a>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="bus mt10 border w295 fr">
+                <h4 class="clearfix"><span>优质供应商</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <ul>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li class="cur"><a href="">资讯供应商资讯供应商资讯供应</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                </ul>
+            </div>
+            <div class="cl"></div>
+            <div class="center w690 mt10 fl">
+                <h2><span>商品中心</span></h2>
+                <ul>
+                    {foreach item=v from=$type}
+                    <li><a href="{insert name=url mod=product_cate id=$v.id}">{$v.title}</a> </li>
+                    {/foreach}
+                    <li><a href="{insert name=url mod=product_cate}">更多>></a> </li>
+                </ul>
+                <div class="cl"></div>
+                <div class="centerList borderTop">
+                    {foreach item=v from=$product name=pro key=k}
+                    <div class="list_box mt10 {if $k == 0 || $k % 3 != 0}mr16{/if} fl">
+                        <a href="{insert name=url mod=product_show id=$v.id}"><div class="border"><img width="158" height="131" src="{$web_dir}uploadfile/upfiles/{$v.pic}" /></div>
+                        <p>{$v.title}</p></a>
+                    </div>
+                    {/foreach}
+                </div>
+            </div>
+            <div class="bus mt10 border w295 fr">
+                <h4 class="clearfix"><span>大家都在关注</span></h4>
+                <ul>
+                    {foreach item=v from=$hits }
+                    <li><a href="{insert name=url mod=news_show id=$v.id}">{$v.title|truncate:32:''}</a><span>{$v.addtime|date_format:Y/m/d}</span></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="bus mt10 border w295 fr">
+                <h4 class="clearfix"><span>招聘信息</span><a class="more" href="{insert name=url mod=jobs_news id=21}"><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <ul>
+                    {foreach item=v from=$jobs }
+                    <li><a href="{insert name=url mod=jobs_news_show id=$v.id}">{$v.title|truncate:32:''}</a><span>{$v.addtime|date_format:Y/m/d}</span></li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+        <script>
+            $(document).ready(function() {
+                //banner
+                /*鼠标移过，左右按钮显示*/
+                $(".banner").hover(function(){
+                    $(this).find(".prev,.next").fadeTo("show",0.1);
+                },function(){
+                    $(this).find(".prev,.next").hide();
+                })
+                /*鼠标移过某个按钮 高亮显示*/
+                $(".prev,.next").hover(function(){
+                    $(this).fadeTo("show",0.7);
+                },function(){
+                    $(this).fadeTo("show",0.1);
+                })
+                $(".banner").slide({ titCell:".num ul" , mainCell:".51buypic" , effect:"fold", autoPlay:true, delayTime:700 , autoPage:true });
+
+                //Default Action
+                $(".tab_content").hide(); //Hide all content
+                $("h4.tabs span:first").addClass("cur").show(); //Activate first tab
+                $(".tab_content:first").show(); //Show first tab content
+
+                //On Click Event
+                $("h4.tabs span").click(function() {
+                    $("h4.tabs span").removeClass("cur"); //Remove any "active" class
+                    $(this).addClass("cur"); //Add "active" class to selected tab
+                    $(".tab_content").hide(); //Hide all tab content
+                    var activeTab = $(this).attr("data-obj"); //Find the rel attribute value to identify the active tab + content
+                    $(activeTab).fadeIn(); //Fade in the active content
+                    return false;
+                });
+                $("table tr").mouseover(function(){
+                    $(this).addClass('cur');
+                });
+                $("table tr").mouseout(function(){
+                    $(this).removeClass('cur');
+                });
+                $("table tr:not(:first-child)").click(function(){
+                    var id = $(this).attr('data-id');
+                    window.location = '?mod=information_show&id='+id;
+                });
+            });
+        </script>
+    </body>
+</html>

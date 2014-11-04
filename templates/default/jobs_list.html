@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+        <link type="text/css" rel="stylesheet" href="{$theme_dir}css/page.css" />
+    </head>
+    <body>
+        {include file="default/header.html"}
+        {include file="default/here.html"}
+        <div class="main w1000 auto clearfix">
+            <div class="w680 fl">
+                <div class="jobs w660 mt10 fl">
+                    <h4 class="clearfix"><img class="fl" src="{$theme_dir}images/jobTitle.png" /></h4>
+                    <table width="100%" align="center" cellspacing="0" cellpadding="0">
+                        <tr class="even">
+                            <td width="20%">招聘职位</td>
+                            <td width="20%">薪资</td>
+                            <td width="20%">招聘人数</td>
+                            <td width="20%">发布时间</td>
+                            <td width="20%">有效期</td>
+                        </tr>
+                        {foreach item=v from=$jobs key=k}
+                        <tr class="{if $k % 2 == 0}odd{else}even{/if}">
+                            <td>{$v.title}</td>
+                            <td>{$v.xinzi}</td>
+                            <td>{$v.renshu}</td>
+                            <td>{$v.starttime|date_format:Y-m-d}</td>
+                            <td>{$v.youxiao}天</td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                    <div class="clh"></div>
+                    <div class="page">{$pagestr}</div>
+                </div>
+            </div>
+            <div class="w295 fr">
+                <div class="bus mt10 border w295 fr">
+                    <h4 class="clearfix"><span>名企招聘</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                    <ul>
+                        {foreach item=v from=$mqzp}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}">{$v.title|truncate:32:''}</a><span>{$v.addtime|date_format:Y/m/d}</span></li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="bus mt10 border w295 fr">
+                    <h4 class="clearfix"><span>教你用人</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                    <ul>
+                        {foreach item=v from=$jnyr}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}">{$v.title|truncate:32:''}</a><span>{$v.addtime|date_format:Y/m/d}</span></li>
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="bus mt10 border w295 fr">
+                    <h4 class="clearfix"><span>职场资讯</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                    <ul>
+                        {foreach item=v from=$zczx}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}">{$v.title|truncate:32:''}</a><span>{$v.addtime|date_format:Y/m/d}</span></li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+    </body>
+</html>

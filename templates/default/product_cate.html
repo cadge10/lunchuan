@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+        <link type="text/css" rel="stylesheet" href="{$theme_dir}css/page.css" />
+    </head>
+    <body>
+        {include file="default/header.html"}
+        {include file="default/here.html"}
+        <div class="product_cate w1000 auto mt10 clearfix">
+            <div class="search">
+                <ul>
+                    <li>按产品分类搜索：</li>
+                    <li {if $id == ''}class="cur"{/if}><a href="{insert name=url mod=product_cate code=$smarty.get.code}">不限</a></li>
+                    {foreach item=v from=$type}
+                    <li {if $id == $v.id}class="cur"{/if}><a href="{insert name=url mod=product_cate id=$v.id code=$smarty.get.code}">{$v.title}</a> </li>
+                    {/foreach}
+                </ul>
+                <div class="cl"></div>
+                <ul>
+                    <li>所属地区：</li>
+                    <li {if $code == ''}class="cur"{/if}><a href="{insert name=url mod=product_cate id=$smarty.get.id}">不限</a></li>
+                    {foreach item=v from=$city}
+                    <li {if $code == $v.city}class="cur"{/if}><a href="{insert name=url mod=product_cate code=$v.city id=$smarty.get.id}">{$v.name}</a> </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="clh"></div>
+            <div class="pro_list w728 fl">
+                <table cellpadding="10" cellspacing="1">
+                    {foreach item=v from=$get_data}
+                    <tr data-id="{$v.id}">
+                        <td width="50"><input type="checkbox" name="id[]" value="{$v.id}" /></td>
+                        <td><img width="135" height="110" src="{$web_dir}uploadfile/upfiles/{$v.pic}" /></td>
+                        <td>
+                            <dl>
+                                <dt>{$v.title}</dt>
+                            </dl>
+                            <dl>
+                                <dt>产品类别：{$v.tname}</dt>
+                            </dl>
+                            <dl>
+                                <dt>规格型号：{$v.xinghao}</dt>
+                            </dl>
+                        </td>
+                        <td>￥{$v.price}<br><img src="{$theme_dir}images/pri.png" /> </td>
+                        <td>{$v.name}</td>
+                        <td>
+                            <span>和我联系</span>
+                            <span>联系方式</span>
+                        </td>
+                    </tr>
+                    {/foreach}
+                </table>
+                <div class="clh"></div>
+                <div class="page ta-c w728">{$pagestr}</div>
+            </div>
+            {include file="default/product_left.html"}
+        </div>
+        {include file="default/footer.html"}
+        <script>
+            $(function(){
+                $("table tr").mouseover(function(){
+                    $(this).addClass('cur');
+                });
+                $("table tr").mouseout(function(){
+                    $(this).removeClass('cur');
+                });
+                $("table tr").click(function(){
+                    var id = $(this).attr('data-id');
+                    window.location="?mod=product_show&id="+id;
+                });
+            })
+        </script>
+    </body>
+</html>

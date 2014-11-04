@@ -1,0 +1,37 @@
+<div class="clearfix link w1000 auto mt10">
+   <div class="title fl">友情链接：</div>
+    <ul>
+        {foreach item=v from=$link}
+        <li><a href="{$v.url}" target="_blank">{$v.title}</a></li>
+        {/foreach}
+    </ul>
+</div>
+
+<footer>
+    <ul  class="w1000 auto">
+        {foreach item=v from=$footer}
+        <li>{$v.title}
+            <ul>
+                {foreach item=y from=$v.news}
+                <li><a href="{if $y.url != ''}{$y.url}{else}{insert name=url mod=page id=$y.id}{/if}">{$y.title}</a></li>
+                {/foreach}
+            </ul>
+        </li>
+        {/foreach}
+
+        <li><img src="{$theme_dir}images/footer_qrcode.png" /></li>
+    </ul>
+</footer>
+
+<script>
+    function LoginForm(){
+        var username = $("input[name=user]").val();
+        var password = $("input[name=pass]").val();
+        if(username == '' || password == '')
+        {
+            alert('请输入用户名或密码');
+            return false;
+        }
+        return true;
+    }
+</script>

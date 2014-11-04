@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        {include file="default/here.html"}
+        <div class="main w1000 auto clearfix">
+            {include file="default/news_left.html"}
+            <div class="fr w728 cagetory border clearfix">
+                <div class="title ta-c">{$info.title}</div>
+                <article>
+                    {$info.content}
+                    <div class="go">
+                        {if $prev}
+                        <p>上一篇：<a href="{if $prev.url != ''}{$prev.url}{else}{insert name=url mod=news_show id=$prev.id}{/if}" title="{$prev.title}">{$prev.title|truncate:50:''}</a> </p>
+                        {/if}
+                        {if $next}
+                        <p>下一篇：<a href="{if $next.url != ''}{$next.url}{else}{insert name=url mod=news_show id=$next.id}{/if}" title="{$next.title}">{$next.title|truncate:50:''}</a></p>
+                        {/if}
+                        <div class="bdsharebuttonbox fr"><a href="#" class="bds_more" data-cmd="more"></a><a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a><a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a><a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a><a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a></div>
+                        <script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"0","bdSize":"24"},"share":{},"image":{"viewList":["tsina","qzone","tqq","weixin"],"viewText":"分享到：","viewSize":"16"},"selectShare":{"bdContainerClass":null,"bdSelectMiniList":["tsina","qzone","tqq","weixin"]}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+                    </div>
+                </article>
+                <div class="clh"></div>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+    </body>
+</html>

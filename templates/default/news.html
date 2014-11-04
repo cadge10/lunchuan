@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+        <link type="text/css" rel="stylesheet" href="{$theme_dir}css/lrtk.css" />
+        <script type="text/javascript" src="{$theme_dir}js/koala.min.1.5.js"></script>
+    </head>
+    <body>
+        {include file="default/header.html"}
+        <div class="main w1000 auto mt10 clearfix">
+            <div class="w325 mr10 fl">
+                <div id="fsD1" class="focus">
+                    <div id="D1pic1" class="fPic">
+                        {foreach item=v from=$banner}
+                        <div class="fcon" style="display: none;">
+                            <a target="_blank" href="{$v.url}"><img width="325" height="210" src="{$web_dir}uploadfile/upfiles/{$v.pic}" style="opacity: 1; "></a>
+                            <span class="shadow"><a target="_blank" href="{$v.url}">{$v.title}</a></span>
+                        </div>
+                        {/foreach}
+                    </div>
+                    <div class="fbg">
+                        <div class="D1fBt" id="D1fBt">
+                            <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>1</i></a>
+                            <a href="javascript:void(0)" hidefocus="true" target="_self" class=""><i>2</i></a>
+                            <a href="javascript:void(0)" hidefocus="true" target="_self" class="current"><i>3</i></a>
+                        </div>
+                    </div>
+                    <span class="prev"></span>
+                    <span class="next"></span>
+                </div>
+            </div>
+            <div class="bus border w400 fl">
+                <h4 class="clearfix"><span>最新资讯</span><a class="more" href="{insert name=url mod=cagetory id=20}"><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <ul>
+                    {foreach item=v from=$new}
+                    <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a><span>{$v.addtime|date_format:Y/m/d}</span></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="w250 fr"><a href=""><img src="{$theme_dir}images/contact.png" /></a></div>
+            <div class="bus mt10 border w250 fr">
+                <h4 class="clearfix"><span>视频新闻</span><a class="more" href="{insert name=url mod=cagetory id=19}"><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <ul>
+                    {foreach item=v from=$movie}
+                    <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a><span>{$v.addtime|date_format:Y/m/d}</span></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="bus mr10 mt10 border w323 fl">
+                <h4 class="clearfix"><span>专题*活动</span><a class="more" href="{insert name=url mod=cagetory id=18}"><img src="{$theme_dir}images/more.png" /> </a></h4>
+                {foreach item=v from=$active}
+                <div class="active fl">
+                    <a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}"> <img src="{$web_dir}uploadfile/upfiles/{$v.pic}" />
+                    <p>{$v.title}</p></a>
+                </div>
+                {/foreach}
+            </div>
+            <div class="bus mt10 border w400 fl">
+                <h4 class="clearfix"><span>企业动态</span><a class="more" href="{insert name=url mod=cagetory id=7}"><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <ul>
+                    {foreach item=v from=$company}
+                    <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a><span>{$v.addtime|date_format:Y/m/d}</span></li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="clh"></div>
+            <h1 class="clearfix mt10"><span>行业资讯</span> <a href="{insert name=url mod=cagetory id=6}" class="more">更 多</a> </h1>
+            <div class="list">
+                <div class="box mt10 w350 fl">
+                    <h3>行业动态 <a href="{insert name=url mod=cagetory id=9}" class="more">更多></a> </h3>
+                    <ul>
+                        {foreach item=v key=k from=$hydt}
+                        {if $k == 0}
+                        <li class="clearfix"><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}"> <img class="fl" src="{$web_dir}uploadfile/upfiles/{$v.pic}" />
+                            <p><span>{$v.title|truncate:32:''}</span>
+                                <desc>{$v.content|strip_tag|truncate:100:''}</desc></p>
+                        </a>
+                        </li>
+                        {else}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a><span>{$v.author}</span></li>
+                        {/if}
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="box mt10 w350 fl">
+                    <h3>市场研究 <a href="{insert name=url mod=cagetory id=10}" class="more">更多></a> </h3>
+                    <ul>
+                        {foreach item=v key=k from=$scyj}
+                        {if $k == 0}
+                        <li class="clearfix"><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}"> <img class="fl" src="{$web_dir}uploadfile/upfiles/{$v.pic}" />
+                            <p><span>{$v.title|truncate:32:''}</span>
+                                <desc>{$v.content|strip_tag|truncate:100:''}</desc></p>
+                        </a>
+                        </li>
+                        {else}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a><span>{$v.author}</span></li>
+                        {/if}
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="border newbox mt10 w230 fr">
+                    <h3>政策法规 </h3>
+                    <ul>
+                        {foreach item=v from=$zcfg}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:30:''}</a> </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            <div class="clh"></div>
+            <h1 class="clearfix mt10"><span>企业动态</span> <a href="{insert name=url mod=cagetory id=7}" class="more">更 多</a> </h1>
+            <div class="list">
+                <div class="box mt10 w350 fl">
+                    <h3>企业新闻 <a href="{insert name=url mod=cagetory id=12}" class="more">更多></a> </h3>
+                    <ul>
+                        {foreach item=v key=k from=$qyxw}
+                        {if $k == 0}
+                        <li class="clearfix"><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}"> <img class="fl" src="{$web_dir}uploadfile/upfiles/{$v.pic}" />
+                            <p><span>{$v.title|truncate:32:''}</span>
+                                <desc>{$v.content|strip_tag|truncate:100:''}</desc></p>
+                        </a>
+                        </li>
+                        {else}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a><span>{$v.author}</span></li>
+                        {/if}
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="box mt10 w350 fl">
+                    <h3>业界名人 <a href="{insert name=url mod=cagetory id=13}" class="more">更多></a> </h3>
+                    <ul>
+                        {foreach item=v key=k from=$yjmw}
+                        {if $k == 0}
+                        <li class="clearfix"><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}"> <img class="fl" src="{$web_dir}uploadfile/upfiles/{$v.pic}" />
+                            <p><span>{$v.title|truncate:32:''}</span>
+                                <desc>{$v.content|strip_tag|truncate:100:''}</desc></p>
+                        </a>
+                        </li>
+                        {else}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a><span>{$v.author}</span></li>
+                        {/if}
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="border newbox mt10 w230 fr">
+                    <h3>新品推荐 </h3>
+                    <ul>
+                        {foreach item=v from=$xptj}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:30:''}</a> </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+            <div class="clh"></div>
+            <h1 class="clearfix mt10"><span>知识库</span> <a href="{insert name=url mod=cagetory id=8}" class="more">更 多</a> </h1>
+            <div class="list">
+                <div class="box mt10 w350 fl">
+                    <h3>行业知识 <a href="{insert name=url mod=cagetory id=15}" class="more">更多></a> </h3>
+                    <ul>
+                        {foreach item=v key=k from=$hyzs}
+                        {if $k == 0}
+                        <li class="clearfix"><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}"> <img class="fl" src="{$web_dir}uploadfile/upfiles/{$v.pic}" />
+                            <p><span>{$v.title|truncate:32:''}</span>
+                                <desc>{$v.content|strip_tag|truncate:100:''}</desc></p>
+                        </a>
+                        </li>
+                        {else}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a><span>{$v.author}</span></li>
+                        {/if}
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="box mt10 w350 fl">
+                    <h3>再利用技术 <a href="{insert name=url mod=cagetory id=16}" class="more">更多></a> </h3>
+                    <ul>
+                        {foreach item=v key=k from=$zly}
+                        {if $k == 0}
+                        <li class="clearfix"><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}"> <img class="fl" src="{$web_dir}uploadfile/upfiles/{$v.pic}" />
+                            <p><span>{$v.title|truncate:32:''}</span>
+                                <desc>{$v.content|strip_tag|truncate:100:''}</desc></p>
+                        </a>
+                        </li>
+                        {else}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:50:''}</a><span>{$v.author}</span></li>
+                        {/if}
+                        {/foreach}
+                    </ul>
+                </div>
+                <div class="border newbox mt10 w230 fr">
+                    <h3>成功故事 </h3>
+                    <ul>
+                        {foreach item=v from=$cggs}
+                        <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}">{$v.title|truncate:30:''}</a> </li>
+                        {/foreach}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+        <script type="text/javascript">
+            Qfast.add('widgets', { path: "{$theme_dir}js/terminator2.2.min.js", type: "js", requires: ['fx'] });
+            Qfast(false, 'widgets', function () {
+                K.tabs({
+                    id: 'fsD1',   //焦点图包裹id
+                    conId: "D1pic1",  //** 大图域包裹id
+                    tabId:"D1fBt",
+                    tabTn:"a",
+                    conCn: '.fcon', //** 大图域配置class
+                    auto: 1,   //自动播放 1或0
+                    effect: 'fade',   //效果配置
+                    eType: 'click', //** 鼠标事件
+                    pageBt:true,//是否有按钮切换页码
+                    bns: ['.prev', '.next'],//** 前后按钮配置class
+                    interval: 3000  //** 停顿时间
+                })
+            })
+        </script>
+    </body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+        <link type="text/css" rel="stylesheet" href="{$theme_dir}css/page.css" />
+    </head>
+    <body>
+        {include file="default/header.html"}
+        {include file="default/here.html"}
+        <div class="main w1000 auto clearfix">
+            {include file="default/news_left.html"}
+            <div class="fr w728 cagetory border clearfix">
+                <div class="title">{$info.title}</div>
+                <ul>
+                    {foreach item=v from=$get_data}
+                    <li><a href="{if $v.url != ''}{$v.url}{else}{insert name=url mod=news_show id=$v.id}{/if}" title="{$v.title}"> {$v.title|truncate:100:''}<span class="fr">{$v.addtime|date_format:Y-m-d}</span></a></li>
+                    {/foreach}
+                </ul>
+                <div class="clh"></div>
+                <div class="page">{$pagestr}</div>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+    </body>
+</html>

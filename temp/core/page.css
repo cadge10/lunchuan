@@ -1,0 +1,6 @@
+/* 分页样式，可适当调整 */
+.page_style{text-align:right;font-size:14px;line-height:24px; font-family:Arial;}
+.page_style a,.page_style a:link,.page_style a:visited{color:#616161;text-decoration:none;outline:0 none}
+.page_style a:hover{color:#FF5A00;text-decoration:none}
+.page_style a,.page_style .current{border:solid 1px #CECECE;line-height:22px;padding:0 7px;font-size:14px;display:inline-block;vertical-align:middle;background:#FFF}
+.page_style .current{color:#FF5A00;}

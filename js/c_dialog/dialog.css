@@ -1,0 +1,26 @@
+/* 修正IE6振动bug */
+* html,* html body {background-image:url(about:blank);background-attachment:fixed;}
+/* 弹框 */
+#c_dialog_overlay {position:fixed;top:0;left:0;height:100%;width:100%;background-color:#000;filter:alpha(opacity=25);-moz-opacity:0.25;opacity:0.25;z-index:1000;display:none;}
+* html #c_dialog_overlay {position:absolute;margin:0 auto;width:100%;width:expression(document.documentElement.clientWidth);height:expression(offsetParent.scrollTop+document.documentElement.clientHeight)}
+#c_dialog_loading {background:#fff url(images/loading.gif) no-repeat 1px 1px;width:34px;height:34px;position:fixed;top:50%;left:50%;margin:-32px 0 0 -32px;z-index:1001;display:none;}
+#c_dialog_window{background-color:#fff;z-index:1002;position:fixed;top:50%;left:50%;border:2px solid #cccccc;width:300px;height:150px;display:none;padding-bottom:8px;box-shadow: 0pt 0pt 10px rgb(119, 119, 119)}
+* html #c_dialog_window{position:absolute;top:expression(eval(document.documentElement.scrollTop+80));}
+#c_dialog_window_w {position:relative;left:-3px;top:-3px;}
+#c_dialog_title {background:url(images/pagebg.gif) repeat-x;height:26px;line-height:25px;padding:5px 10px;font-size:14px;color:#333;font-weight:bold;text-align:left;}
+#c_dialog_body {width:100%;}
+#c_dialog_iframe {width:100%;height:100%;border:0 none;}
+#c_dialog_close {position:absolute;width:13px;height:13px;overflow:hidden;display:block;color:#000;right:9px;top:12px;text-decoration:none;background:url(images/close.gif) no-repeat;cursor:pointer}
+#c_dialog_close:hover{background-position:0 -12px;}
+/* 提示窗 */
+.c_tips_window {padding:0;position:fixed;top:50%;left:50%;z-index:1100;width:250px;}
+* html .c_tips_window {position:absolute;top:expression((offsetParent.scrollTop+document.documentElement.clientHeight-this.offsetHeight)/2);left:expression(document.documentElement.clientWidth/2);}
+.c_tips_wrap {padding:10px 20px;border:1px solid #666;background-color:#fff;font-size:14px;text-align:left;box-shadow: 0pt 0pt 10px rgb(119, 119, 119);}
+.c_tips_autoclose {height:20px;line-height:20px;color:#666;font-size:12px;text-align:left;}
+.c_tips_ico_1,.c_tips_ico_2,.c_tips_ico_3,.c_tips_ico_4,
+.c_tips_ico_5 {background:#fff no-repeat 20px center;padding-left:90px;}
+.c_tips_ico_1 {background-image:url(images/dialog_msgtype_ico_1.gif);}
+.c_tips_ico_2 {background-image:url(images/dialog_msgtype_ico_2.gif);}
+.c_tips_ico_3 {background-image:url(images/dialog_msgtype_ico_3.gif);}
+.c_tips_ico_4 {background-image:url(images/dialog_msgtype_ico_4.gif);}
+.c_tips_ico_5 {background-image:url(images/dialog_msgtype_ico_5.gif);}

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        <div class="main w1000 auto mt10 clearfix">
+            <div class="product w660 fl">
+                <h4 class="clearfix"><img class="fl" src="{$theme_dir}images/productCompany.png" /> <span><img class="fl" src="{$theme_dir}images/productTitle.png" /> 轮胎贸易最新企业加入</span></h4>
+                <div class="clh"></div>
+                <ul>
+                    {foreach item=v from=$company key=k}
+                    <li class="{if $k % 2 == 0}fl{else}fr{/if}"><label>[{$v.city}]</label><a href="{insert name=url mod=space id=$v.id}">{$v.company}</a> <span>{$v.reg_date|date_format:Y-m-d}</span></li>
+                    {/foreach}
+                </ul>
+            </div>
+            {if $smarty.session.login_id >0}
+            <div class="loginWin border w295 fr">
+                <h4 class="clearfix"><span>会员登录</span><span>免费注册</span></h4>
+                <div class="clh"></div>
+                <form method="post" action="{insert name=url mod=login}" onsubmit="return LoginWinForm();">
+                    <div style="text-indent: 2em;">欢迎回来，{$smarty.session.login_user},<a href="{insert name=url mod=login act=out}">[注销]</a></div>
+                    <div class="clh"></div>
+                </form>
+            </div>
+            {else}
+            <div class="loginWin border w295 fr">
+                <h4 class="clearfix"><span>会员登录</span><span>免费注册</span></h4>
+                <div class="clh"></div>
+                <form method="post" action="{insert name=url mod=login}" onsubmit="return LoginWinForm();">
+                    <label>用户名：</label><input class="w200 fl" type="text" name="username" />
+                    <div class="clh"></div>
+                    <label>密&nbsp;&nbsp;码：</label><input class="w200 fl" type="password" name="password" />
+                    <div class="clh"></div>
+                    <label>&nbsp;</label><input type="image" src="{$theme_dir}images/loginBtn.png" /> <a href="{insert name=url mod=forget}"> 忘记密码?</a>
+                    <div class="clh"></div>
+                </form>
+            </div>
+            {/if}
+            <div class="bus mt10 border w295 fr">
+                <h4 class="clearfix"><span>优质供应商</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <ul>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                </ul>
+            </div>
+            <div class="company w680 mt10 fl">
+                <div class="fl"><img src="{$theme_dir}images/company1.png" /></div>
+                <div class="fl"><img src="{$theme_dir}images/company2.png" /></div>
+                <div class="fl"><img src="{$theme_dir}images/company3.png" /></div>
+                <div class="fl"><img src="{$theme_dir}images/company4.png" /></div>
+            </div>
+            <div class="fix w680 mt10 fl">
+                <h4 class="clearfix">&nbsp;&nbsp;维修专区 <a href="">更多>>&nbsp;</a> </h4>
+                <table width="100%" align="center" cellspacing="1" cellpadding="2">
+                    <tr class="even">
+                        <td width="20%">类别</td>
+                        <td width="20%">价格</td>
+                        <td width="20%">数量</td>
+                        <td width="20%">新旧程度</td>
+                        <td width="20%">位置</td>
+                    </tr>
+                    <tr class="odd">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr class="even">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                    <tr class="odd">
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                        <td>&nbsp;</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="ad mt10 w295 fr"><a href="{$banner.url}"> <img src="{$web_dir}uploadfile/upfiles/{$banner.pic}" /> </a></div>
+            <div class="cl"></div>
+            <div class="area mt10 border w1000 clearfix">
+                <h4 class="clearfix"><span>按国家地区查找</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <div class="cl"></div>
+                <ul>
+                    <li>中心城市
+                        <ul>
+                            {foreach item=v from=$city}
+                            <li><a href="{insert name=url mod=product_cate code=$v.city}">{$v.name}</a> </li>
+                            {/foreach}
+                        </ul>
+                    </li>
+                    {foreach item=v from=$province}
+                    <li>{$v.name}
+                        <ul>
+                            {foreach item=y from=$v.city}
+                            <li><a href="{insert name=url mod=product_cate code=$y.city}">{$y.name}</a></li>
+                            {/foreach}
+                        </ul>
+                    </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="cl"></div>
+            <div class="search fl mt10 w680 clearfix">
+                <h4><img src="{$theme_dir}images/searchTitle.png" /> </h4>
+                {foreach item=v from=$type key=k}
+                <div class="box mt10 bg-img{$k}">
+                    <ul>
+                        {foreach from=$v.child item=y}
+                        <li><a href="{insert name=url mod=product_cate id=$y.id}">{$y.title}</a> </li>
+                        {/foreach}
+                    </ul>
+                </div>
+                {/foreach}
+            </div>
+            <div class="pro mt10 border w295 fr">
+                <h4><span>最新产品</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <ul>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                </ul>
+            </div>
+            <div class="quotation mt10 border w295 fr">
+                <h4><span>最新行情</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                <ul>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                </ul>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+    </body>
+</html>

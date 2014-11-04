@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<template>
+  <template_name>官方默认模板</template_name>
+  <template_url>http://www.zjr1.com/</template_url>
+  <description>这是一个官方默认的模板</description>
+  <version>1.0</version>
+  <author>Dingyi Team</author>
+  <author_url>http://www.zjr1.com/</author_url>
+</template>

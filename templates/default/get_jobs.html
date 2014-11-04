@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        {include file="default/here.html"}
+        <div class="jobs w1000 auto clearfix">
+            <h2><span>发布求职信息</span></h2>
+            <form action="" method="post">
+            <table width="100%">
+                <tr>
+                    <th width="20%">*职位名称：</th>
+                    <td width="80%"><input class="w260" type="text" name="jobs_title" /></td>
+                </tr>
+                <tr>
+                    <th>性别：</th>
+                    <td><input type="radio" value="1" name="sex" checked />男 <input type="radio" value="2" name="sex" />女</td>
+                </tr>
+                <tr>
+                    <th>生日：</th>
+                    <td><input class="w260" type="text" name="birthday" /></td>
+                </tr>
+                <tr>
+                    <th>毕业院校：</th>
+                    <td><input class="w260" type="text" name="xuexiao" /></td>
+                </tr>
+                <tr>
+                    <th>学历：</th>
+                    <td><input class="w260" type="text" name="xueli" /></td>
+                </tr>
+                <tr>
+                    <th>主修专业：</th>
+                    <td><input class="w260" type="text" name="zhuanye" /></td>
+                </tr>
+                <tr>
+                    <th>工作经验：</th>
+                    <td><input class="w260" type="text" name="jingyan" /></td>
+                </tr>
+                <tr>
+                    <th>期望月薪：</th>
+                    <td><input class="w260" type="text" name="xinzi" /></td>
+                </tr>
+                <tr>
+                    <th>上传图片：</th>
+                    <td><input class="w260" type="text" name="xinzi" /></td>
+                </tr>
+                <tr>
+                    <th>*详细信息：</th>
+                    <td><textarea class="w260 h80" name="content"></textarea></td>
+                </tr>
+            </table>
+            <hr style="height:2px;border-width:0;color:green;background-color:green">
+            <table width="100%">
+                <tr>
+                    <th width="20%">*姓名：</th>
+                    <td width="80%"><input class="w260" type="text" name="realname" /></td>
+                </tr>
+                <tr>
+                    <th>*固定电话：</th>
+                    <td><input class="w260" type="text" name="tel" /></td>
+                </tr>
+                <tr>
+                    <th>*移动电话：</th>
+                    <td><input class="w260" type="text" name="phone" /></td>
+                </tr>
+                <tr>
+                    <th>*联系地址：</th>
+                    <td><input class="w260" type="text" name="address" /></td>
+                </tr>
+                <tr>
+                    <th>*验证码：</th>
+                    <td><input class="w50 fl" type="text" name="code" /><img height="28" src="includes/getcode.php" onerror="this.onerror=null;this.src='includes/getcode.php?s='" title="看不清楚?换一张" style="cursor:pointer;" onclick="this.src='includes/getcode.php?s='" /></td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td><input type="image" src="{$theme_dir}images/send_submit.png" /></td>
+                </tr>
+            </table>
+            </form>
+        </div>
+        {include file="default/footer.html"}
+    </body>
+</html>

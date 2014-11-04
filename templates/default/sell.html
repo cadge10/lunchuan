@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        {include file="default/here.html"}
+        <div class="sell w1000 auto clearfix">
+            <h2><span class="cur" onclick="window.location='?mod=sell'">供应信息发布</span> <span onclick="window.location='?mod=get'">求购信息发布</span></s></h2>
+            <form method="post">
+                <div class="fl w330 mt20">
+                    <table>
+                        <tr>
+                            <th width="40%">生产厂家：</th>
+                            <td width="60%"><input class="w230" type="text" name="changjia" /></td>
+                        </tr>
+                        <tr>
+                            <th>产地：</th>
+                            <td>
+                                <select style="width: 82px;" name="province" id="province" onchange="javascript:getCity(this.options[this.selectedIndex].value);">
+                                    <option value="-1">请选择</option>
+                                </select>
+                                <select style="width: 145px;" name="city" id="city">
+                                    <option value="-1">请选择</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>价格：</th>
+                            <td><input class="w230" type="text" name="price" /></td>
+                        </tr>
+                        <tr>
+                            <th>运输方式：</th>
+                            <td><input class="w230" type="text" name="yunshu" /></td>
+                        </tr>
+                        <tr>
+                            <th>包装：</th>
+                            <td><input class="w230" type="text" name="baozhuang" /></td>
+                        </tr>
+                        <tr>
+                            <th>交货地点：</th>
+                            <td><input class="w230" type="text" name="didian" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="fl w330 mt20">
+                    <table>
+                        <tr>
+                            <th width="40%">规格型号：</th>
+                            <td width="60%"><input class="w230" type="text" name="xinghao" /></td>
+                        </tr>
+                        <tr>
+                            <th>受关注度：</th>
+                            <td><input class="w230" type="text" name="guanzhu" /></td>
+                        </tr>
+                        <tr>
+                            <th>供应数量：</th>
+                            <td><input class="w230" type="text" name="num" /></td>
+                        </tr>
+                        <tr>
+                            <th>付款方式：</th>
+                            <td><input class="w230" type="text" name="fukuai" /></td>
+                        </tr>
+                        <tr>
+                            <th>最小定量：</th>
+                            <td><input class="w230" type="text" name="min" /></td>
+                        </tr>
+                        <tr>
+                            <th>信息有效期：</th>
+                            <td><input class="w230" type="text" name="youxiao" /></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="fl w330 mt20 pic">
+                    <table>
+                        <tr>
+                            <td><div id="img" class="auto">上传产品图片</div><input type="hidden" name="pic" /></td>
+                        </tr>
+                        <tr>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr><td><div class="w280 auto"><iframe src="{$web_dir}includes/upload_pic.php?name=pic" width="280" height="25" frameborder="0" scrolling="no"></iframe></div></td></tr>
+                    </table>
+                </div>
+                <div class="clh"></div>
+                <div class="title">产品详细介绍</div>
+                <div class="content ta-c">
+                    <?php echo editor::xhEditor();?>
+                </div>
+                <div class="title">联系方式</div>
+                <div class="content">
+                    <div class="fl w330 mt20">
+                        <table>
+                            <tr>
+                                <th width="40%">姓名：</th>
+                                <td width="60%">{$info.realname}</td>
+                            </tr>
+                            <tr>
+                                <th>手机号码：</th>
+                                <td>{$info.phone}</td>
+                            </tr>
+                            <tr>
+                                <th>传真：</th>
+                                <td>{$info.fax}</td>
+                            </tr>
+                            <tr>
+                                <th>地址：</th>
+                                <td>{$info.address}</td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="fl w330 mt20">
+                        <table>
+                            <tr>
+                                <th width="40%">职务：</th>
+                                <td width="60%">{if $info.utype == 1}供应商{else}采购商{/if}</td>
+                            </tr>
+                            <tr>
+                                <th>固定电话：</th>
+                                <td>{$info.tel}</td>
+                            </tr>
+                            <tr>
+                                <th>E-mail：</th>
+                                <td>{$info.email}</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="cl"></div>
+                <div class="ta-c"><input type="hidden" name="userid" value="{$info.id}" /><input type="image" src="{$theme_dir}images/sellbtn.png" ></div>
+            </form>
+        </div>
+        {include file="default/footer.html"}
+    <script>
+        $(function(){
+            var url_province = "?mod=sell&act=province" ;
+            $('#province').empty() ;
+            $('#province').append('<option value="-1">请选择</option>') ;
+            $.getJSON(url_province,function(json){
+                $(json).each(function(i){
+                    // alert(json[i].id) ;
+                    var option = '<option value="'+json[i].code+'">'+json[i].name+'</option>' ;
+                    $('#province').append(option);
+                });
+            });
+        }) ;
+
+        function getCity(code){
+
+            var url_city = "?mod=sell&act=city" ;
+            $('#city').empty() ;
+            $('#city').append('<option value="-1">请选择</option>') ;
+            //alert(code) ;
+            $.getJSON(url_city,{'code':code},function(json){
+                $(json).each(function(i){
+                    var option = '<option value="'+json[i].code+'">'+json[i].name+'</option>' ;
+                    $('#city').append(option);
+                });
+            });
+        }
+
+    </script>
+    </body>
+</html>

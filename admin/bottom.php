@@ -1,0 +1,2 @@
+<?php !defined('APP_VERSION')?exit('Undefine WEBDES!'):'';// 底部信息 ?>
+<div id="footer" style="display:none;">Powered by <a href="<?php echo APP_WEBSITE;?>" target="_blank"><strong><?php echo APP_NAME;?></strong></a> &copy; 2005-<?php echo date('Y');?></div>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        {include file="default/here.html"}
+        <div class="main w1000 auto clearfix">
+            <div class="fl w728 information_show border clearfix">
+                <div class="title">{$info.mingcheng}</div>
+                <div class="subtitle clearfix">产品关键字：{$info.tname},{$info.mingcheng}<span class="fr">产品类别所属：{$info.tname}</span></div>
+                <h6 class="clearfix">供应基本信息<span class="fr">更新时间：{$info.addtime|date_format:Y-m-d}</span></h6>
+                <div class="pic clearfix">
+                    <img src="{$web_dir}uploadfile/upfiles/{$info.pic}" />
+                    <dl>
+                        <dt width="30%">生产厂家：</dt>
+                        <dd>{$info.changjia}</dd>
+                    </dl>
+                    <dl>
+                        <dt width="30%">规格型号：</dt>
+                        <dd>{$info.xinghao}</dd>
+                    </dl>
+                    <dl>
+                        <dt width="30%">产&nbsp;&nbsp;&nbsp;&nbsp;地：</dt>
+                        <dd>{$info.name}</dd>
+                    </dl>
+                    <dl>
+                        <dt>价&nbsp;&nbsp;&nbsp;&nbsp;格：</dt>
+                        <dd>{$info.price}</dd>
+                        <dt>包&nbsp;&nbsp;&nbsp;&nbsp;装：</dt>
+                        <dd>{$info.baozhuang}</dd>
+                    </dl>
+                    <dl>
+                        <dt>供应数量：</dt>
+                        <dd>{$info.num}</dd>
+                        <dt>最小订量：</dt>
+                        <dd>{$info.min}</dd>
+                    </dl>
+                    <dl>
+                        <dt>运输方式：</dt>
+                        <dd>{$info.yunshu}</dd>
+                        <dt>交货地点：</dt>
+                        <dd>{$info.didian}</dd>
+                    </dl>
+                    <dl>
+                        <dt>付款方式：</dt>
+                        <dd>{$info.fukuai}</dd>
+                        <dt>信息有效期：</dt>
+                        <dd>{$info.youxiao}</dd>
+                    </dl>
+                </div>
+                <h6 class="clearfix">产品详细描述：</h6>
+                <article>{$info.content}</article>
+                <h6 class="clearfix">产品互动专区：</h6>
+                <div class="subtitle clearfix">点此询价 留个消息 推荐 收藏</div>
+                <h6 class="clearfix">企业联系方式：</h6>
+                <div class="subtitle clearfix red">
+                    {if $smarty.session.login_id > 0}
+                        {$info.phone} {$info.tel} {$info.email}
+                    {else}
+                        您好！查看联系方式，请先<a href="{insert name=url mod=login}">登录</a>！如果您还不是会员，点此<a href="{insert name=url mod=register}">注册</a>
+                    {/if}
+                </div>
+                <div class="clh"></div>
+            </div>
+            {include file="default/information_left.html"}
+        </div>
+        {include file="default/footer.html"}
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<div class="clearfix top">
+    <div class="w1000 auto">
+        {if $smarty.session.login_id > 0}
+        <div class="userInfo fl">欢迎回来，{$smarty.session.login_user},<a href="{insert name=url mod=login act=out}">[注销]</a> </div>
+        {else}
+        <div class="userInfo fl">欢迎来到{$web_config.web_title}![<a href="{insert name=url mod=register}">免费注册</a>]</div>
+        <div class="formLogin fl">
+            <form action="{insert name=url mod=login}" method="post" onsubmit="return LoginForm();">
+                    <label class="fl">登录账户：</label><input class="in fl" name="user" type="text" value="" />
+                    <label class="fl">登录密码：</label><input class="in fl" name="pass" type="password" value="" />
+                    <input type="hidden" value="login" name="act" />
+                    <input type="image" src="{$theme_dir}images/login.png" />
+            </form>
+        </div>
+        <div class="otherLogin fr">
+            <span><a href="#"><img src="{$theme_dir}images/qq.png" /> QQ登录</a></span>
+            <!--<span><a href="#"><img src="{$theme_dir}images/sina.png" />新浪登录</a></span>-->
+        </div>
+        {/if}
+    </div>
+</div>
+
+<div class="clearfix">
+    <header class="w1000 auto">
+        <div class="fl">
+            <a href="/"><img src="{$theme_dir}images/logo.png" /></a>
+        </div>
+        <div class="search fl">
+                <form action="{insert name=url mod=search}" method="get" onsubmit="return SearchForm();">
+                    <input class="search_key fl" type="text" name="key" />
+                    <input type="image" src="{$theme_dir}images/search.png" class="" />
+                </form>
+        </div>
+        <div class="fr moblie">
+            <div class="fl qrcode">
+                <img src="{$theme_dir}images/qcode.png" />
+            </div>
+            <div class="fr version">
+                <span class="green">移动端</span>
+                <span><a href="#"><img src="{$theme_dir}images/andorid.png" /></a></span>
+                <span><a href="#"><img src="{$theme_dir}images/iphone.png" /></a></span>
+            </div>
+        </div>
+    </header>
+</div>
+
+<nav class="clearfix">
+    <ul class="w1000 auto">
+        <li {if $web_view == 'index' || $web_view == ''}class="current"{/if}>
+            <a href="{insert mod=index name=url}">首 页</a>
+        </li>
+        <li {if $web_view == 'news' || $web_view == 'news_show' || $web_view == 'cagetory'}class="current"{/if}>
+            <a href="{insert mod=news name=url}">行业资讯</a>
+        </li>
+        <li {if $web_view == 'price' }class="current"{/if}>
+            <a href="{insert mod=price name=url}">行情报价</a>
+        </li>
+        <li {if $web_view == 'information' || $web_view == 'information_show' || $web_view == 'sell' || $web_view == 'get' }class="current"{/if}>
+            <a href="{insert mod=information name=url}">供求信息</a>
+        </li>
+        <li {if $web_view == 'product' || $web_view == 'product_show' || $web_view == 'product_cate'}class="current"{/if}>
+            <a href="{insert mod=product name=url}">商品中心</a>
+        </li>
+        <li {if $web_view == 'jobs' || $web_view == 'jobs_news' || $web_view == 'jobs_news_show' || $web_view == 'jobs_show' || $web_view =='jobs_list' || $web_view == 'users_list' || $web_view == 'send_jobs' || $web_view == 'get_jobs'}class="current"{/if}>
+            <a href="{insert mod=jobs name=url}">招聘中心</a>
+        </li>
+        <li {if $web_view == 'bbs'}class="current"{/if}>
+            <a href="/bbs">社区互动</a>
+        </li>
+    </ul>
+</nav>

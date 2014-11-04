@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+    </head>
+    <body>
+        {include file="default/header.html"}
+        <div class="page w1000 auto mt10 clearfix">
+            <div class="fl cagetory border w250">
+                <h2>{$info.tname}</h2>
+                <ul>
+                    {foreach item=v from=$cage}
+                    <li {if $v.id == $info.id}class="cur"{/if}><a href="{insert name=url mod=page id=$v.id}">{$v.title}</a> </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="fr w728 border content">
+                <div class="title">{$info.title}<span><img src="{$theme_dir}images/here.png" /> 您现在的位置：<a href="/"> 首页</a> > <a href="{insert name=url mod=page id=$info.id}">{$info.tname}</a> > {$info.title}</span></div>
+                <article>
+                    {$info.content}
+                </article>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+    </body>
+</html>

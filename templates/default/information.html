@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{$file_title}-{$web_config.web_title}</title>
+        {include file="default/meta.html"}
+        <link type="text/css" rel="stylesheet" href="{$theme_dir}css/page.css" />
+    </head>
+    <body>
+        {include file="default/header.html"}
+        <div class="main w1000 auto mt10 clearfix">
+            <div class="fl">
+                <div class="information w670 mt10 fr">
+                    {if $smarty.get.type == 2}
+                    <h4 class="clearfix"><img class="fr" src="{$theme_dir}images/get.png" /> <span><a class="gou fl" href="{insert name=url mod=information}">供应信息</a></span></h4>
+                    {else}
+                    <h4 class="clearfix"><img class="fl" src="{$theme_dir}images/information.png" /> <span><a class="gou" href="{insert name=url mod=information type=2}">求购信息</a></span></h4>
+                    {/if}
+                    <ul class="clearfix">
+                        <li {if $smarty.get.code == ''}class="cur"{/if}><a href="{insert name=url mod=information cp=$smarty.get.cp type=$smarty.get.type}">所有地区</a></li>
+                        {foreach item=v from=$city}
+                        <li {if $smarty.get.code == $v.city}class="cur"{/if}><a href="{insert name=url mod=information cp=$smarty.get.cp code=$v.city type=$smarty.get.type}">{$v.name}</a> </li>
+                        {/foreach}
+                    </ul>
+                    <ul class="clearfix">
+                        <li {if $smarty.get.cp == ''}class="cur"{/if}><a href="{insert name=url mod=information code=$smarty.get.code type=$smarty.get.type}">所有产品</a></li>
+                        {foreach item=v from=$product}
+                        <li {if $smarty.get.cp == $v.mingcheng}class="cur"{/if}><a href="{insert name=url mod=information code=$smarty.get.code cp=$v.mingcheng type=$smarty.get.type}">{$v.mingcheng}</a> </li>
+                        {/foreach}
+                    </ul>
+                    <table width="100%" align="center" cellspacing="0" cellpadding="0">
+                        <tr class="even">
+                            <td width="14%">型号</td>
+                            <td width="18%">产品名称</td>
+                            <td width="14%">价格</td>
+                            <td width="18%">地区</td>
+                            <td width="18%">更新时间</td>
+                            <td width="18%">公司名称</td>
+                        </tr>
+                        {foreach item=v from=$get_data key=k}
+                        <tr data-id="{$v.id}" class="{if $k % 2 == 1}odd{else}even{/if}">
+                            <td>{$v.xinghao}</td>
+                            <td>{$v.mingcheng}</td>
+                            <td class="red">￥{$v.price}</td>
+                            <td>{$v.name}</td>
+                            <td>{$v.addtime|date_format:Y-m-d}</td>
+                            <td>{$v.changjia}</td>
+                        </tr>
+                        {/foreach}
+                    </table>
+                    <div class="clh"></div>
+                    <div class="page">{$pagestr}</div>
+                </div>
+
+            </div>
+            <div class="fr">
+                <div class="w295 fr"><a href="{if $smarty.session.utype == 1}{insert name=url mod=sell}{else}{insert name=url mod=get}{/if}"><img src="{$theme_dir}images/send.png" /></a></div>
+                <div class="cl"></div>
+                <div class="bus mt10 border w295 fr">
+                    <h4 class="clearfix"><span>最新求购</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                    <ul>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    </ul>
+                </div>
+                <div class="cl"></div>
+                <div class="bus mt10 border w295 fr">
+                    <h4 class="clearfix"><span>最新供应</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                    <ul>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    </ul>
+                </div>
+                <div class="cl"></div>
+                <div class="bus mt10 border w295 fr">
+                    <h4 class="clearfix"><span>供应商推荐</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                    <ul>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    </ul>
+                </div>
+                <div class="cl"></div>
+                <div class="bus mt10 border w295 fr">
+                    <h4 class="clearfix"><span>求购商推荐</span><a class="more" href=""><img src="{$theme_dir}images/more.png" /> </a></h4>
+                    <ul>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                        <li><a href="">资讯供应商资讯供应商资讯供应商资</a><span>2014/6/10</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {include file="default/footer.html"}
+        <script>
+            $(function(){
+                $("table tr").mouseover(function(){
+                    $(this).addClass('cur');
+                });
+                $("table tr").mouseout(function(){
+                    $(this).removeClass('cur');
+                });
+                $("table tr:not(:first-child)").click(function(){
+                    var id = $(this).attr('data-id');
+                    window.location = '?mod=information_show&id='+id;
+                });
+            })
+        </script>
+    </body>
+</html>
