@@ -62,5 +62,4 @@ if(!method_exists($obj,$fun)){
 }
 $obj->$fun();
 exit();
-
 ?>
