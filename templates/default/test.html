@@ -6,6 +6,8 @@
     </head>
     <body>
         <p>test!</p>
+
+        <p id="data"></p>
     </body>
     <script>
         var ws = new WebSocket("ws://localhost:8090");
@@ -14,7 +16,9 @@
             ws.send("hello");
         };
         ws.onmessage = function (evt) {
-            console.log(evt.data)
+            console.log(evt.data);
+            string = "数据处理中。。。";
+            $("#data").html(string);
         };
         ws.onclose = function (evt) {
             console.log("WebSocketClosed!");
