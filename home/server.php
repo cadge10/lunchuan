@@ -45,6 +45,7 @@ function roboot($sign, $t)
             $show = '( ⊙o⊙?)不懂,你可以尝试说:hello,name,time,再见,天王盖地虎.';
     }
     $websocket->write($sign, 'Robot:' . $show);
+    exit;
 }
 
 ?>
