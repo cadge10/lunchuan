@@ -1,5 +1,5 @@
 <?
-
+require "websocket.class.php";
 
 $config = array('address' => '112.124.58.211', 'port' => '8090', 'event' => 'WSevent',//回调函数的函数名
     'log' => true,);
