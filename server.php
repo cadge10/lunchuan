@@ -1,7 +1,7 @@
 <?php
 require "websocket.class.php";
 
-$config = array('address' => '112.124.58.211', 'port' => '80', 'event' => 'WSevent',//回调函数的函数名
+$config = array('address' => '127.0.0.1', 'port' => '8999', 'event' => 'WSevent',//回调函数的函数名
     'log' => true,);
 $websocket = new websocket($config);
 $websocket->run();
