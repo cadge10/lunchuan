@@ -24,7 +24,7 @@
         var $ = function (id) {
             return document.getElementById(id) || null;
         }
-        var wsServer = 'ws://112.124.58.211:80';
+        var wsServer = 'ws://112.124.58.211:8900/start_ws.php';
         var ws = new WebSocket(wsServer);
         var isConnect = false;
         ws.onopen = function (evt) {
