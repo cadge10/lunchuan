@@ -14,7 +14,7 @@
     <input type="button" value="发送" onClick="send()">
     <script>
         function link() {
-            var url = 'ws://112.124.58.211/server.php';
+            var url = 'ws://112.124.58.211:80';
             socket = new WebSocket(url);
             socket.onopen = function () {
                 log('连接成功')
