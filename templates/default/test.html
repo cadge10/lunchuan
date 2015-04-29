@@ -3,7 +3,7 @@
 <head>
     <title>websocket聊天室</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{$theme_dir}css/bootstrap.min.css">
 
 </head>
 <body>
@@ -24,7 +24,7 @@
         var $ = function (id) {
             return document.getElementById(id) || null;
         }
-        var wsServer = 'ws://112.124.58.211:8900/start_ws.php';
+        var wsServer = 'ws://112.124.58.211:8900';
         var ws = new WebSocket(wsServer);
         var isConnect = false;
         ws.onopen = function (evt) {
