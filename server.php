@@ -47,4 +47,3 @@ function roboot($sign, $t)
     $websocket->write($sign, 'Robot:' . $show);
 }
 
-?>
