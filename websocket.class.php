@@ -51,7 +51,7 @@ class websocket
     public function __construct($config)
     {
         if (substr(php_sapi_name(), 0, 3) !== 'cli') {
-            die("请通过命令行模式运行!");
+            // die("请通过命令行模式运行!");
         }
         error_reporting(E_ALL);
         set_time_limit(0);
